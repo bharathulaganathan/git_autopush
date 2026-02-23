@@ -35,7 +35,7 @@ sudo nvim /usr/local/bin/autopush/autopush.sh
 - Generate new SSH key without passphrase
 
 ```sh
-ssh-keygen -t ed25519 -f $absolute_path_to_key -N ""
+ssh-keygen -t ed25519 -f $path_to_key -N ""
 ```
 
 - Add key to the project
@@ -49,7 +49,7 @@ git config core.sshCommand "ssh -i $absolute_path_to_key -F $absolute_path_to_ss
 - Add public key to repo
 
 ```
-Repo > Settings > Deploy keys > Add deploy key
+Repo > Settings > Deploy keys > Add deploy key (WITH "ALLOW WRITE ACCESS" ENABLED)
 ```
 
 ### 5. Add autopush.sh to anacorn
@@ -61,5 +61,11 @@ sudo nvim /etc/anacrontab
 Add the following
 
 ```
-1   5   autopush.job    /bin/bash /usr/local/bin/autopush/autopush.sh >> /usr/local/bin/autopush/autopush.log 2>&1
+1	5	autopush.job	/bin/bash /usr/local/bin/autopush/autopush.sh >> /usr/local/bin/autopush/autopush.log 2>&1
+```
+
+## Testing
+
+```sh
+sudo a
 ```
