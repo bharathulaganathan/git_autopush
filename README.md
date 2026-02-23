@@ -14,6 +14,7 @@ sudo pacman -S cronie
 ### 1. Clone this repo to get autopush.sh
 
 ```sh
+sudo rm -rf /usr/local/bin/autopush.bak
 sudo mv /usr/local/bin/autopush{,.bak}
 sudo git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local/bin/autopush
 ```
