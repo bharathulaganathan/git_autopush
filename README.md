@@ -14,16 +14,13 @@ sudo pacman -S cronie
 ### 1. Clone this repo to get autopush.sh
 
 ```sh
-mv /usr/lib/bin/.git{,.bak}
 mv /usr/lib/bin/autopush{,.bak}
-git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local/bin
-rm -rf /usr/lib/bin/.git
-mv /usr/lib/bin/.git{.bak,}
+git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local/bin/autopush
 ```
 
 ### 2. Add necessary projects to autopush.sh
 
-- Open /usr/local/bin/autopush.sh
+- Open /usr/local/bin/autopush/autopush.sh
 - Add projects to FOLDERS variable
 
 ### 3. Add Deploy key to .git/config and repo for each project
@@ -60,5 +57,5 @@ Repo > Settings > Deploy keys > Add deploy key
 Add to /etc/anacrontab
 
 ```
-1   5   autopush.job    /bin/bash /usr/local/bin/autopush.sh
+1   5   autopush.job    /bin/bash /usr/local/bin/autopush/autopush.sh
 ```
