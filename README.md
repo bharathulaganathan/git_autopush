@@ -14,8 +14,8 @@ sudo pacman -S cronie
 ### 1. Clone this repo to get autopush.sh
 
 ```sh
-mv /usr/lib/bin/autopush{,.bak}
-git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local/bin/autopush
+sudo mv /usr/lib/bin/autopush{,.bak}
+sudo git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local/bin/autopush
 ```
 
 ### 2. Add necessary projects to autopush.sh
