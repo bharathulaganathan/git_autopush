@@ -14,7 +14,11 @@ sudo pacman -S cronie
 ### 1. Clone this repo to get autopush.sh
 
 ```sh
-git clone https://github.com/bharathulaganathan/git_autopush /usr/local/bin
+mv /usr/lib/bin/.git{,.bak}
+mv /usr/lib/bin/autopush{,.bak}
+git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local/bin
+rm -rf /usr/lib/bin/.git
+mv /usr/lib/bin/.git{.bak,}
 ```
 
 ### 2. Add necessary projects to autopush.sh
@@ -30,11 +34,19 @@ git clone https://github.com/bharathulaganathan/git_autopush /usr/local/bin
 ssh-keygen -t ed25519 -f "/path/to/sshkey" -N ""
 ```
 
-- Add key to .git/config of the project
+- Add key to the project
 
 ```
+cd /path/to/project
+# Open .git/config
+# Add following line under [core]
 [core]
 	sshCommand = ssh -i /path/to/sshkey
+```
+or
+```sh
+cd /path/to/project
+git config core.sshCommand "ssh -i /path/to/sshkey -F /dev/null"
 ```
 
 - Add public key to repo
