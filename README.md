@@ -21,29 +21,26 @@ sudo git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local
 ### 2. Add necessary projects to autopush.sh
 
 - Open /usr/local/bin/autopush/autopush.sh
-- Add projects to FOLDERS variable
+- Add the following in it:
+	1. Username
+	2. Git Email
+	3. Git Name
+	4. Folders to autopush
 
 ### 3. Add Deploy key to .git/config and repo for each project
 
 - Generate new SSH key without passphrase
 
 ```sh
-ssh-keygen -t ed25519 -f "/path/to/sshkey" -N ""
+ssh-keygen -t ed25519 -f absolute_path_to_key -N ""
 ```
 
 - Add key to the project
 
-```
-cd /path/to/project
-# Open .git/config
-# Add following line under [core]
-[core]
-	sshCommand = ssh -i /path/to/sshkey
-```
-or
 ```sh
-cd /path/to/project
-git config core.sshCommand "ssh -i /path/to/sshkey -F /dev/null"
+cd path_to_project
+git config core.sshCommand "ssh -i absolute_path_to_key -F absolute_path_to_ssh_config -o StrictHostKeyChecking=no"
+# can skip -F if url doesnt need config
 ```
 
 - Add public key to repo
@@ -57,5 +54,5 @@ Repo > Settings > Deploy keys > Add deploy key
 Add to /etc/anacrontab
 
 ```
-1   5   autopush.job    /bin/bash /usr/local/bin/autopush/autopush.sh
+1   5   autopush.job    /bin/bash /usr/local/bin/autopush/autopush.sh >> /usr/local/bin/autopush/autopush.log 2>&1
 ```
