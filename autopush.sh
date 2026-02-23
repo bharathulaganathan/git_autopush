@@ -1,10 +1,16 @@
 #!/bin/bash
 
-# Need inputs
+# ADD USERNAME
 USERNAME="username"
-GIT_EMAIL="git_email"
-GIT_NAME="git_name"
 export HOME="/home/$USERNAME"
+
+# ADD GIT EMAIL
+GIT_EMAIL="git_email"
+
+# ADD GIT NAME
+GIT_NAME="git_name"
+
+# ADD PROJECT FOLDERS
 FOLDERS=(
     # "$HOME/.config/zsh_hist"
 )
