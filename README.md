@@ -4,6 +4,10 @@
 
 ### 1. systemd (Arch)
 
+```sh
+ps -p 1 -o comm=
+```
+
 ## OR
 
 ### 1. anacron
