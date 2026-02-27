@@ -2,7 +2,7 @@
 
 ## Requirements
 
-### 1. Systemd (Arch)
+### 1. systemd (Arch)
 
 ## OR
 
@@ -19,14 +19,14 @@ sudo pacman -S cronie
 
 ```sh
 rm -rf ~/.local/bin/autopush.bak
-sudo mv ~/.local/bin/autopush{,.bak}
-sudo git clone https://github.com/bharathulaganathan/git_autopush.git ~/.local/bin/autopush
+mv ~/.local/bin/autopush{,.bak}
+git clone https://github.com/bharathulaganathan/git_autopush.git ~/.local/bin/autopush
 ```
 
 ### 2. Add necessary projects to autopush.sh
 
 ```sh
-sudo nvim /usr/local/bin/autopush/autopush.sh
+sudo nvim ~/.local/bin/autopush/autopush.sh
 # Add the following in it:
 # - Username
 # - Git Email
@@ -55,24 +55,31 @@ git config core.sshCommand "ssh -i $absolute_path_to_key -F $absolute_path_to_ss
 ```
 Repo > Settings > Deploy keys > Add deploy key (WITH "ALLOW WRITE ACCESS" ENABLED)
 ```
+
 ### 5. Add autopush.sh to serives
 
 Add necessary services and timers
 
 ```sh
-sudo rm -rf /etc/systemd/system/autopush.service.bak
-sudo rm -rf /etc/systemd/system/autopush.timer.bak
-sudo mv /etc/systemd/system/autopush.service{,.bak}
-sudo mv /etc/systemd/system/autopush.timer{,.bak}
-sudo mv ~/.local/bin/autopush/autopush.service /etc/systemd/system/autopush.service
-sudo mv ~/.local/bin/autopush/autopush.timer /etc/systemd/system/autopush.timer
+sudo rm -rf ~/.config/systemd/user/autopush.service.bak
+sudo rm -rf ~/.config/systemd/user/autopush.timer.bak
+sudo mv ~/.config/systemd/user/autopush.service{,.bak}
+sudo mv ~/.config/systemd/user/autopush.timer{,.bak}
+sudo mv ~/.local/bin/autopush/autopush.service ~/.config/systemd/user/autopush.service
+sudo mv ~/.local/bin/autopush/autopush.timer ~/.config/systemd/user/autopush.timer
 ```
 
 Enable the services and timers
 
 ```sh
-sudo systemctl daemon-reload
-sudo systemctl enable --now autopush.timer
+systemctl --user daemon-reload
+systemctl --user enable --now autopush.timer
+```
+
+Enable user lingering
+
+```sh
+sudo loginctl enable-linger $USER
 ```
 
 ## OR
