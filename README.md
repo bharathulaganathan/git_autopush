@@ -5,10 +5,11 @@
 ### 1. systemd (Arch)
 
 ```sh
+systemctl --version
 ps -p 1 -o comm=
 ```
 
-## OR
+#### OR
 
 ### 1. anacron
 
@@ -22,7 +23,7 @@ sudo pacman -S cronie
 ### 1. Clone this repo to get autopush.sh
 
 ```sh
-rm -rf ~/.local/bin/autopush.bak
+sudo rm -rf ~/.local/bin/autopush.bak
 mv ~/.local/bin/autopush{,.bak}
 git clone https://github.com/bharathulaganathan/git_autopush.git ~/.local/bin/autopush
 ```
@@ -31,11 +32,6 @@ git clone https://github.com/bharathulaganathan/git_autopush.git ~/.local/bin/au
 
 ```sh
 nvim ~/.local/bin/autopush/autopush.sh
-# Add the following in it:
-# - Username
-# - Git Email
-# - Git Name
-# - Folders to autopush
 ```
 
 ### 3. Add Deploy key to .git/config and repo for each project
@@ -87,7 +83,7 @@ Enable user lingering
 sudo loginctl enable-linger $USER
 ```
 
-## OR
+#### OR
 
 ### 4. Add autopush.sh to anacorn
 
@@ -102,6 +98,15 @@ Add the following
 ```
 
 ## Testing
+
+### systemd services
+
+```sh
+systemctl --user list-timers
+loginctl show-user $USER | grep Linger
+systemctl --user start autopush.service
+cat ~/.local/bin/autopush/autopush.log
+```
 
 ```sh
 sudo a
