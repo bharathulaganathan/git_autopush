@@ -2,6 +2,10 @@
 
 ## Requirements
 
+### 1. Systemd (Arch)
+
+## OR
+
 ### 1. anacron
 
 ```sh
@@ -14,9 +18,9 @@ sudo pacman -S cronie
 ### 1. Clone this repo to get autopush.sh
 
 ```sh
-sudo rm -rf /usr/local/bin/autopush.bak
-sudo mv /usr/local/bin/autopush{,.bak}
-sudo git clone https://github.com/bharathulaganathan/git_autopush.git /usr/local/bin/autopush
+rm -rf ~/.local/bin/autopush.bak
+sudo mv ~/.local/bin/autopush{,.bak}
+sudo git clone https://github.com/bharathulaganathan/git_autopush.git ~/.local/bin/autopush
 ```
 
 ### 2. Add necessary projects to autopush.sh
@@ -51,6 +55,27 @@ git config core.sshCommand "ssh -i $absolute_path_to_key -F $absolute_path_to_ss
 ```
 Repo > Settings > Deploy keys > Add deploy key (WITH "ALLOW WRITE ACCESS" ENABLED)
 ```
+### 5. Add autopush.sh to serives
+
+Add necessary services and timers
+
+```sh
+sudo rm -rf /etc/systemd/system/autopush.service.bak
+sudo rm -rf /etc/systemd/system/autopush.timer.bak
+sudo mv /etc/systemd/system/autopush.service{,.bak}
+sudo mv /etc/systemd/system/autopush.timer{,.bak}
+sudo mv ~/.local/bin/autopush/autopush.service /etc/systemd/system/autopush.service
+sudo mv ~/.local/bin/autopush/autopush.timer /etc/systemd/system/autopush.timer
+```
+
+Enable the services and timers
+
+```sh
+sudo systemctl daemon-reload
+sudo systemctl enable --now autopush.timer
+```
+
+## OR
 
 ### 5. Add autopush.sh to anacorn
 
