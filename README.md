@@ -56,7 +56,7 @@ git config core.sshCommand "ssh -i $absolute_path_to_key -F $absolute_path_to_ss
 Repo > Settings > Deploy keys > Add deploy key (WITH "ALLOW WRITE ACCESS" ENABLED)
 ```
 
-### 5. Add autopush.sh to serives
+### 4. Add autopush.sh to serives
 
 Add necessary services and timers
 
@@ -65,6 +65,7 @@ rm -rf ~/.config/systemd/user/autopush.service.bak
 rm -rf ~/.config/systemd/user/autopush.timer.bak
 mv ~/.config/systemd/user/autopush.service{,.bak}
 mv ~/.config/systemd/user/autopush.timer{,.bak}
+mkdir -p ~/.config/systemd/user
 mv ~/.local/bin/autopush/autopush.service ~/.config/systemd/user/autopush.service
 mv ~/.local/bin/autopush/autopush.timer ~/.config/systemd/user/autopush.timer
 ```
@@ -84,7 +85,7 @@ sudo loginctl enable-linger $USER
 
 ## OR
 
-### 5. Add autopush.sh to anacorn
+### 4. Add autopush.sh to anacorn
 
 ```sh
 sudo nvim /etc/anacrontab
