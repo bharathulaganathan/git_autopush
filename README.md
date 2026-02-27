@@ -26,7 +26,7 @@ git clone https://github.com/bharathulaganathan/git_autopush.git ~/.local/bin/au
 ### 2. Add necessary projects to autopush.sh
 
 ```sh
-sudo nvim ~/.local/bin/autopush/autopush.sh
+nvim ~/.local/bin/autopush/autopush.sh
 # Add the following in it:
 # - Username
 # - Git Email
@@ -61,12 +61,12 @@ Repo > Settings > Deploy keys > Add deploy key (WITH "ALLOW WRITE ACCESS" ENABLE
 Add necessary services and timers
 
 ```sh
-sudo rm -rf ~/.config/systemd/user/autopush.service.bak
-sudo rm -rf ~/.config/systemd/user/autopush.timer.bak
-sudo mv ~/.config/systemd/user/autopush.service{,.bak}
-sudo mv ~/.config/systemd/user/autopush.timer{,.bak}
-sudo mv ~/.local/bin/autopush/autopush.service ~/.config/systemd/user/autopush.service
-sudo mv ~/.local/bin/autopush/autopush.timer ~/.config/systemd/user/autopush.timer
+rm -rf ~/.config/systemd/user/autopush.service.bak
+rm -rf ~/.config/systemd/user/autopush.timer.bak
+mv ~/.config/systemd/user/autopush.service{,.bak}
+mv ~/.config/systemd/user/autopush.timer{,.bak}
+mv ~/.local/bin/autopush/autopush.service ~/.config/systemd/user/autopush.service
+mv ~/.local/bin/autopush/autopush.timer ~/.config/systemd/user/autopush.timer
 ```
 
 Enable the services and timers
