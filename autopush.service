@@ -3,6 +3,6 @@ Description=Git Autopush
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash /usr/local/bin/autopush/autopush.sh
-StandardOutput=append:/usr/local/bin/autopush/autopush.log
-StandardError=append:/usr/local/bin/autopush/autopush.log
+ExecStart=/bin/bash %h/.local/bin/autopush/autopush.sh
+StandardOutput=append:%h/.local/bin/autopush/autopush.log
+StandardError=append:%h/.local/bin/autopush/autopush.log
