@@ -1,22 +1,9 @@
 #!/bin/bash
 
-# ADD USERNAME
-USERNAME="username"
-export HOME="/home/$USERNAME"
-
-# ADD GIT EMAIL
-GIT_EMAIL="git_email"
-
-# ADD GIT NAME
-GIT_NAME="git_name"
-
 # ADD PROJECT FOLDERS
 FOLDERS=(
     # "$HOME/.config/zsh_hist"
 )
-
-git config --global user.email "$GIT_EMAIL"
-git config --global user.name "$GIT_NAME"
 
 for FOLDER in "${FOLDERS[@]}"; do
     if [ -d "$FOLDER" ]; then
